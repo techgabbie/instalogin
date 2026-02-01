@@ -2,10 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Instagram — carregando…</title>
+<title>Instagram</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -16,7 +15,7 @@ body{
     color:#262626;
 }
 
-/* ===== LOADING LOGO ===== */
+/* ===== SPLASH REAL ===== */
 #splash{
     position:fixed;
     inset:0;
@@ -24,19 +23,17 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    z-index:999;
-    animation:fadeOut 1s ease 2.5s forwards;
+    z-index:9999;
 }
 #splash img{
-    width:90px;
-    animation:pulse 1.5s infinite;
+    width:88px;
+    animation:igOpen 2.4s ease forwards;
 }
-@keyframes pulse{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.08)}
-}
-@keyframes fadeOut{
-    to{opacity:0;visibility:hidden}
+@keyframes igOpen{
+    0%{transform:scale(.8);opacity:0}
+    30%{opacity:1}
+    70%{transform:scale(1)}
+    100%{transform:scale(1.15);opacity:0}
 }
 
 /* ===== APP ===== */
@@ -44,42 +41,47 @@ body{
     display:flex;
     max-width:1400px;
     margin:auto;
+    opacity:0;
+    animation:appIn .8s ease forwards;
+    animation-delay:2.2s;
+}
+@keyframes appIn{
+    to{opacity:1}
 }
 
 /* ===== SIDEBAR ===== */
 .sidebar{
-    width:250px;
+    width:245px;
+    padding:20px;
     height:100vh;
     position:fixed;
-    padding:20px;
 }
-.logo img{width:120px;margin-bottom:30px}
+.logo img{width:120px;margin-bottom:32px}
 .nav a{
     display:flex;
     align-items:center;
     gap:16px;
-    padding:12px;
+    padding:12px 10px;
     border-radius:8px;
+    font-size:16px;
     text-decoration:none;
     color:#000;
 }
-.nav a:hover{background:#eee}
-.nav i{font-size:20px}
+.nav a:hover{background:#efefef}
+.nav i{font-size:22px}
 
 /* ===== MAIN ===== */
 .main{
     margin-left:270px;
     margin-right:340px;
     max-width:630px;
-    width:100%;
-    filter:blur(2px);
 }
 
 /* ===== SKELETON ===== */
 .skeleton{
-    background:linear-gradient(90deg,#eee 25%,#ddd 37%,#eee 63%);
+    background:linear-gradient(90deg,#e5e5e5 25%,#dcdcdc 37%,#e5e5e5 63%);
     background-size:400% 100%;
-    animation:shimmer 1.4s infinite;
+    animation:shimmer 1.3s infinite;
 }
 @keyframes shimmer{
     0%{background-position:100% 0}
@@ -90,26 +92,30 @@ body{
 .stories{
     display:flex;
     gap:14px;
-    padding:20px 0;
+    padding:18px 0;
 }
 .story{
-    width:70px;
+    width:72px;
     text-align:center;
 }
-.story .avatar{
-    width:62px;height:62px;
+.story .ring{
+    width:64px;
+    height:64px;
     border-radius:50%;
     padding:3px;
     background:linear-gradient(45deg,#00ff88,#00c853);
 }
-.story .avatar div{
+.story .ring.gray{
+    background:#dbdbdb;
+}
+.story .ring div{
     width:100%;
     height:100%;
     border-radius:50%;
 }
 .story span{
     font-size:12px;
-    color:#999;
+    color:#8e8e8e;
 }
 
 /* ===== POST ===== */
@@ -127,6 +133,9 @@ body{
 }
 .avatar-sm{
     width:36px;height:36px;border-radius:50%;
+}
+.username{
+    width:120px;height:12px;
 }
 .post-img{
     width:100%;
@@ -148,18 +157,17 @@ body{
 }
 .profile{
     display:flex;
-    gap:12px;
     align-items:center;
+    gap:12px;
 }
 .profile .avatar{
-    width:50px;height:50px;border-radius:50%;
+    width:48px;height:48px;border-radius:50%;
 }
-
-/* ===== FAKE LOGIN TEXT ===== */
-.fake-note{
-    font-size:12px;
-    color:#999;
-    margin-top:20px;
+.profile small{color:#8e8e8e}
+.buttons{
+    margin-top:10px;
+    font-size:13px;
+    color:#8e8e8e;
 }
 </style>
 </head>
@@ -192,42 +200,39 @@ body{
 <!-- MAIN -->
 <main class="main">
 
-    <!-- STORIES -->
-    <div class="stories">
-        <div class="story">
-            <div class="avatar"><div class="skeleton"></div></div>
-            <span>Seu story</span>
-        </div>
-        <div class="story">
-            <div class="avatar"><div class="skeleton"></div></div>
-            <span>amigo</span>
-        </div>
-        <div class="story">
-            <div class="avatar"><div class="skeleton"></div></div>
-            <span>bestie</span>
-        </div>
+<div class="stories">
+    <div class="story">
+        <div class="ring"><div class="skeleton"></div></div>
+        <span>Seu story</span>
     </div>
+    <div class="story">
+        <div class="ring gray"><div class="skeleton"></div></div>
+        <span>amigo</span>
+    </div>
+    <div class="story">
+        <div class="ring gray"><div class="skeleton"></div></div>
+        <span>bestie</span>
+    </div>
+</div>
 
-    <!-- POSTS -->
-    <div class="post">
-        <div class="post-header">
-            <div class="avatar-sm skeleton"></div>
-            <div class="skeleton" style="width:120px;height:12px"></div>
-        </div>
-        <div class="post-img skeleton"></div>
-        <div class="post-actions">
-            <div>♡ 💬 ✈️</div>
-            🔖
-        </div>
+<div class="post">
+    <div class="post-header">
+        <div class="avatar-sm skeleton"></div>
+        <div class="username skeleton"></div>
     </div>
+    <div class="post-img skeleton"></div>
+    <div class="post-actions">
+        <div>♡ 💬 ✈️</div> 🔖
+    </div>
+</div>
 
-    <div class="post">
-        <div class="post-header">
-            <div class="avatar-sm skeleton"></div>
-            <div class="skeleton" style="width:90px;height:12px"></div>
-        </div>
-        <div class="post-img skeleton"></div>
+<div class="post">
+    <div class="post-header">
+        <div class="avatar-sm skeleton"></div>
+        <div class="username skeleton" style="width:90px"></div>
     </div>
+    <div class="post-img skeleton"></div>
+</div>
 
 </main>
 
@@ -237,24 +242,16 @@ body{
         <div class="avatar skeleton"></div>
         <div>
             <strong>@eduardapfin_X</strong><br>
-            <span style="color:#999;font-size:13px">Conta logada</span>
+            <small>Conta logada</small>
         </div>
     </div>
-
-    <div class="fake-note">
-        Perfil carregando…<br>
-        Painel profissional · Editar perfil · Compartilhar
+    <div class="buttons">
+        Painel profissional · Editar perfil<br>
+        Compartilhar perfil · Saiba mais
     </div>
 </aside>
 
 </div>
-
-<script>
-// remove blur depois de "carregar"
-setTimeout(()=>{
-    document.querySelector('.main').style.filter='none'
-},3500)
-</script>
 
 </body>
 </html>
