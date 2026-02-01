@@ -11,11 +11,11 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:#fafafa;
-    color:#262626;
+    background:#fff;
+    color:#000;
 }
 
-/* ===== SPLASH REAL ===== */
+/* SPLASH */
 #splash{
     position:fixed;
     inset:0;
@@ -23,104 +23,114 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    z-index:9999;
+    z-index:999;
 }
 #splash img{
-    width:88px;
-    animation:igOpen 2.4s ease forwards;
+    width:90px;
+    animation:openIG 2.2s ease forwards;
 }
-@keyframes igOpen{
-    0%{transform:scale(.8);opacity:0}
-    30%{opacity:1}
-    70%{transform:scale(1)}
-    100%{transform:scale(1.15);opacity:0}
+@keyframes openIG{
+    0%{opacity:0;transform:scale(.8)}
+    40%{opacity:1}
+    100%{opacity:0;transform:scale(1.1)}
 }
 
-/* ===== APP ===== */
+/* APP */
 .app{
     display:flex;
-    max-width:1400px;
-    margin:auto;
     opacity:0;
-    animation:appIn .8s ease forwards;
-    animation-delay:2.2s;
+    animation:show .6s ease forwards;
+    animation-delay:2s;
 }
-@keyframes appIn{
-    to{opacity:1}
-}
+@keyframes show{to{opacity:1}}
 
-/* ===== SIDEBAR ===== */
+/* SIDEBAR REAL */
 .sidebar{
-    width:245px;
-    padding:20px;
+    width:72px;
     height:100vh;
-    position:fixed;
-}
-.logo img{width:120px;margin-bottom:32px}
-.nav a{
+    border-right:1px solid #dbdbdb;
     display:flex;
+    flex-direction:column;
     align-items:center;
-    gap:16px;
-    padding:12px 10px;
-    border-radius:8px;
-    font-size:16px;
-    text-decoration:none;
+    padding:14px 0;
+    position:fixed;
+    left:0;
+    top:0;
+    background:#fff;
+}
+.sidebar .logo{
+    margin-bottom:30px;
+}
+.sidebar .logo img{
+    width:24px;
+}
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    flex:1;
+}
+.menu i{
+    font-size:22px;
     color:#000;
+    cursor:pointer;
 }
-.nav a:hover{background:#efefef}
-.nav i{font-size:22px}
+.menu i:hover{opacity:.6}
+.profile-dot{
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:#ddd;
+    margin-bottom:10px;
+}
 
-/* ===== MAIN ===== */
+/* MAIN */
 .main{
-    margin-left:270px;
-    margin-right:340px;
+    margin-left:72px;
+    flex:1;
     max-width:630px;
+    padding:20px 0;
 }
 
-/* ===== SKELETON ===== */
+/* SKELETON */
 .skeleton{
-    background:linear-gradient(90deg,#e5e5e5 25%,#dcdcdc 37%,#e5e5e5 63%);
+    background:linear-gradient(90deg,#eee 25%,#e2e2e2 37%,#eee 63%);
     background-size:400% 100%;
-    animation:shimmer 1.3s infinite;
+    animation:shine 1.3s infinite;
 }
-@keyframes shimmer{
-    0%{background-position:100% 0}
-    100%{background-position:-100% 0}
+@keyframes shine{
+    0%{background-position:100%}
+    100%{background-position:-100%}
 }
 
-/* ===== STORIES ===== */
+/* STORIES */
 .stories{
     display:flex;
-    gap:14px;
-    padding:18px 0;
+    gap:16px;
+    padding:10px 0 20px;
 }
 .story{
-    width:72px;
     text-align:center;
+    width:66px;
 }
-.story .ring{
-    width:64px;
-    height:64px;
-    border-radius:50%;
+.ring{
     padding:3px;
-    background:linear-gradient(45deg,#00ff88,#00c853);
-}
-.story .ring.gray{
+    border-radius:50%;
     background:#dbdbdb;
 }
-.story .ring div{
-    width:100%;
-    height:100%;
-    border-radius:50%;
+.ring.green{
+    background:linear-gradient(45deg,#00ff88,#00c853);
+}
+.ring div{
+    width:56px;height:56px;border-radius:50%;
 }
 .story span{
     font-size:12px;
     color:#8e8e8e;
 }
 
-/* ===== POST ===== */
+/* POST */
 .post{
-    background:#fff;
     border:1px solid #dbdbdb;
     border-radius:8px;
     margin-bottom:20px;
@@ -129,127 +139,95 @@ body{
     display:flex;
     align-items:center;
     gap:10px;
-    padding:14px;
-}
-.avatar-sm{
-    width:36px;height:36px;border-radius:50%;
-}
-.username{
-    width:120px;height:12px;
-}
-.post-img{
-    width:100%;
-    height:420px;
-}
-.post-actions{
-    display:flex;
-    justify-content:space-between;
     padding:12px;
-    font-size:20px;
 }
+.avatar{width:32px;height:32px;border-radius:50%}
+.username{width:120px;height:12px}
+.post-img{height:420px}
 
-/* ===== RIGHT ===== */
+/* RIGHT */
 .right{
-    width:300px;
+    width:320px;
+    padding:20px;
     position:fixed;
-    right:20px;
-    top:20px;
+    right:0;
+    top:0;
 }
-.profile{
+.user{
     display:flex;
-    align-items:center;
     gap:12px;
+    align-items:center;
 }
-.profile .avatar{
-    width:48px;height:48px;border-radius:50%;
-}
-.profile small{color:#8e8e8e}
-.buttons{
-    margin-top:10px;
-    font-size:13px;
-    color:#8e8e8e;
-}
+.user .avatar{width:44px;height:44px}
+small{color:#8e8e8e;font-size:12px}
 </style>
 </head>
 
 <body>
 
-<!-- SPLASH -->
 <div id="splash">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg">
 </div>
 
 <div class="app">
 
 <!-- SIDEBAR -->
-<aside class="sidebar">
+<div class="sidebar">
     <div class="logo">
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg">
     </div>
-    <nav class="nav">
-        <a><i class="fa-solid fa-house"></i>Home</a>
-        <a><i class="fa-solid fa-magnifying-glass"></i>Pesquisar</a>
-        <a><i class="fa-regular fa-compass"></i>Explorar</a>
-        <a><i class="fa-regular fa-message"></i>Mensagens</a>
-        <a><i class="fa-regular fa-heart"></i>Notificações</a>
-        <a><i class="fa-solid fa-plus"></i>Criar</a>
-        <a><i class="fa-regular fa-user"></i>Perfil</a>
-    </nav>
-</aside>
+    <div class="menu">
+        <i class="fa-solid fa-house"></i>
+        <i class="fa-regular fa-compass"></i>
+        <i class="fa-regular fa-message"></i>
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-plus"></i>
+    </div>
+    <div class="profile-dot"></div>
+</div>
 
 <!-- MAIN -->
-<main class="main">
+<div class="main">
 
 <div class="stories">
     <div class="story">
-        <div class="ring"><div class="skeleton"></div></div>
+        <div class="ring green"><div class="skeleton"></div></div>
         <span>Seu story</span>
     </div>
     <div class="story">
-        <div class="ring gray"><div class="skeleton"></div></div>
+        <div class="ring"><div class="skeleton"></div></div>
         <span>amigo</span>
-    </div>
-    <div class="story">
-        <div class="ring gray"><div class="skeleton"></div></div>
-        <span>bestie</span>
     </div>
 </div>
 
 <div class="post">
     <div class="post-header">
-        <div class="avatar-sm skeleton"></div>
+        <div class="avatar skeleton"></div>
         <div class="username skeleton"></div>
     </div>
     <div class="post-img skeleton"></div>
-    <div class="post-actions">
-        <div>♡ 💬 ✈️</div> 🔖
-    </div>
 </div>
 
 <div class="post">
     <div class="post-header">
-        <div class="avatar-sm skeleton"></div>
+        <div class="avatar skeleton"></div>
         <div class="username skeleton" style="width:90px"></div>
     </div>
     <div class="post-img skeleton"></div>
 </div>
 
-</main>
+</div>
 
 <!-- RIGHT -->
-<aside class="right">
-    <div class="profile">
+<div class="right">
+    <div class="user">
         <div class="avatar skeleton"></div>
         <div>
             <strong>@eduardapfin_X</strong><br>
             <small>Conta logada</small>
         </div>
     </div>
-    <div class="buttons">
-        Painel profissional · Editar perfil<br>
-        Compartilhar perfil · Saiba mais
-    </div>
-</aside>
+</div>
 
 </div>
 
