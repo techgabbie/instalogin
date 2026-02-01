@@ -18,7 +18,7 @@ body {
   color: #fff;
 }
 
-/* ---------- TOP BAR ---------- */
+/* TOP BAR */
 .topbar {
   height: 50px;
   display: flex;
@@ -26,10 +26,10 @@ body {
   justify-content: space-between;
   padding: 0 15px;
   border-bottom: 1px solid #222;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-/* ---------- FEED ---------- */
+/* FEED */
 #feed {
   padding: 10px;
 }
@@ -53,7 +53,7 @@ body {
   margin-bottom: 20px;
 }
 
-/* ---------- LOADING ---------- */
+/* LOADING */
 #loading {
   display: none;
   height: 100vh;
@@ -64,8 +64,8 @@ body {
 }
 
 .loader {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border: 3px solid #333;
   border-top: 3px solid #fff;
   border-radius: 50%;
@@ -76,7 +76,7 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* ---------- PROFILE ---------- */
+/* PROFILE */
 #profile {
   display: none;
   padding: 15px;
@@ -101,6 +101,34 @@ body {
   font-size: 14px;
 }
 
+.stats div {
+  text-align: center;
+}
+
+/* BUTTONS */
+.btn {
+  margin-top: 15px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  padding: 8px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* OPTIONS */
+.options {
+  margin-top: 10px;
+  border-top: 1px solid #222;
+}
+
+.option {
+  padding: 12px 5px;
+  border-bottom: 1px solid #222;
+  font-size: 14px;
+}
+
+/* GRID */
 .grid {
   margin-top: 20px;
   display: grid;
@@ -138,10 +166,11 @@ body {
   <div>Carregando perfil…</div>
 </div>
 
-<!-- PROFILE -->
+<!-- PROFILE LOGADO -->
 <div id="profile">
   <div class="topbar">
-    ← <span>@eduardapfin_X</span>
+    <span>@eduardapfin_X</span>
+    <span>☰</span>
   </div>
 
   <div class="header">
@@ -153,8 +182,19 @@ body {
     </div>
   </div>
 
-  <p style="margin-top:15px;color:#aaa">conta privada 👀</p>
+  <p style="margin-top:10px;color:#aaa">Conta pessoal</p>
 
+  <!-- BOTÃO EDITAR -->
+  <div class="btn">Editar perfil</div>
+
+  <!-- OPÇÕES DO PERFIL -->
+  <div class="options">
+    <div class="option">📊 Painel profissional</div>
+    <div class="option">🔗 Compartilhar perfil</div>
+    <div class="option">ℹ️ Saiba mais</div>
+  </div>
+
+  <!-- GRID -->
   <div class="grid">
     <div></div><div></div><div></div>
     <div></div><div></div><div></div>
@@ -169,7 +209,7 @@ function openProfile() {
   setTimeout(() => {
     document.getElementById("loading").style.display = "none";
     document.getElementById("profile").style.display = "block";
-  }, 5000); // loading lento de propósito 😈
+  }, 4500); // loading suspeito 😈
 }
 </script>
 
