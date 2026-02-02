@@ -13,6 +13,7 @@ body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     background:#fff;
     color:#000;
+    overflow-x:hidden;
 }
 
 /* SPLASH */
@@ -23,7 +24,7 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    z-index:999;
+    z-index:9999;
 }
 #splash img{
     width:90px;
@@ -39,12 +40,9 @@ body{
 .app{
     display:flex;
     opacity:0;
-    animation:show .6s ease forwards;
-    animation-delay:2s;
 }
-@keyframes show{to{opacity:1}}
 
-/* SIDEBAR REAL */
+/* SIDEBAR */
 .sidebar{
     width:72px;
     height:100vh;
@@ -58,36 +56,24 @@ body{
     top:0;
     background:#fff;
 }
-.sidebar .logo{
-    margin-bottom:30px;
-}
-.sidebar .logo img{
-    width:24px;
-}
+.sidebar img{width:24px;margin-bottom:30px}
 .menu{
     display:flex;
     flex-direction:column;
     gap:22px;
     flex:1;
 }
-.menu i{
-    font-size:22px;
-    color:#000;
-    cursor:pointer;
-}
-.menu i:hover{opacity:.6}
+.menu i{font-size:22px;cursor:pointer}
 .profile-dot{
     width:26px;
     height:26px;
     border-radius:50%;
     background:#ddd;
-    margin-bottom:10px;
 }
 
 /* MAIN */
 .main{
     margin-left:72px;
-    flex:1;
     max-width:630px;
     padding:20px 0;
 }
@@ -107,7 +93,7 @@ body{
 .stories{
     display:flex;
     gap:16px;
-    padding:10px 0 20px;
+    padding:10px 20px 20px;
 }
 .story{
     text-align:center;
@@ -124,16 +110,13 @@ body{
 .ring div{
     width:56px;height:56px;border-radius:50%;
 }
-.story span{
-    font-size:12px;
-    color:#8e8e8e;
-}
+.story span{font-size:12px;color:#8e8e8e}
 
 /* POST */
 .post{
     border:1px solid #dbdbdb;
     border-radius:8px;
-    margin-bottom:20px;
+    margin:0 20px 20px;
 }
 .post-header{
     display:flex;
@@ -165,71 +148,81 @@ small{color:#8e8e8e;font-size:12px}
 
 <body>
 
+<!-- SPLASH -->
 <div id="splash">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg">
 </div>
 
+<!-- APP -->
 <div class="app">
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-    <div class="logo">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg">
+        <div class="menu">
+            <i class="fa-solid fa-house"></i>
+            <i class="fa-regular fa-compass"></i>
+            <i class="fa-regular fa-message"></i>
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="profile-dot"></div>
     </div>
-    <div class="menu">
-        <i class="fa-solid fa-house"></i>
-        <i class="fa-regular fa-compass"></i>
-        <i class="fa-regular fa-message"></i>
-        <i class="fa-regular fa-heart"></i>
-        <i class="fa-solid fa-plus"></i>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="stories">
+            <div class="story">
+                <div class="ring green"><div class="skeleton"></div></div>
+                <span>Seu story</span>
+            </div>
+            <div class="story">
+                <div class="ring"><div class="skeleton"></div></div>
+                <span>amigo</span>
+            </div>
+        </div>
+
+        <div class="post">
+            <div class="post-header">
+                <div class="avatar skeleton"></div>
+                <div class="username skeleton"></div>
+            </div>
+            <div class="post-img skeleton"></div>
+        </div>
+
+        <div class="post">
+            <div class="post-header">
+                <div class="avatar skeleton"></div>
+                <div class="username skeleton" style="width:90px"></div>
+            </div>
+            <div class="post-img skeleton"></div>
+        </div>
+
     </div>
-    <div class="profile-dot"></div>
-</div>
 
-<!-- MAIN -->
-<div class="main">
-
-<div class="stories">
-    <div class="story">
-        <div class="ring green"><div class="skeleton"></div></div>
-        <span>Seu story</span>
-    </div>
-    <div class="story">
-        <div class="ring"><div class="skeleton"></div></div>
-        <span>amigo</span>
-    </div>
-</div>
-
-<div class="post">
-    <div class="post-header">
-        <div class="avatar skeleton"></div>
-        <div class="username skeleton"></div>
-    </div>
-    <div class="post-img skeleton"></div>
-</div>
-
-<div class="post">
-    <div class="post-header">
-        <div class="avatar skeleton"></div>
-        <div class="username skeleton" style="width:90px"></div>
-    </div>
-    <div class="post-img skeleton"></div>
-</div>
-
-</div>
-
-<!-- RIGHT -->
-<div class="right">
-    <div class="user">
-        <div class="avatar skeleton"></div>
-        <div>
-            <strong>@eduardapfin_X</strong><br>
-            <small>Conta logada</small>
+    <!-- RIGHT -->
+    <div class="right">
+        <div class="user">
+            <div class="avatar skeleton"></div>
+            <div>
+                <strong>@eduardapfin_X</strong><br>
+                <small>Perfil logado</small>
+            </div>
         </div>
     </div>
-</div>
 
 </div>
+
+<!-- SCRIPT QUE RESOLVE TUDO -->
+<script>
+window.onload = () => {
+    setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+        document.querySelector(".app").style.opacity = "1";
+    }, 2200);
+};
+</script>
 
 </body>
 </html>
